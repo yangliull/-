@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>详情页面</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/header_footer.css"/>
+    <link rel="stylesheet" href="css/detail.css"/>
+</head>
+<body>
+<div id="header">
+        <div id="wrap">
+            <span>欢迎来到童知童去儿！</span>
+            <ul id= "headerList">
+                <li><a href="login.html">登录</a></li>
+                <li><a href="reg.html">注册</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="search">
+        <div id="wrap">
+            <img src="imgs/logo.png" alt="logo" class="animated bounceIn" id="logo">            
+            <div id="searchIn">
+                <input type="text">
+                <input type="button" class="btn" value="搜索">
+            </div>      
+        </div>
+    </div>
+    <div id="nav">
+        <div id="wrap">
+            <ul id="navList">
+                <li class="selected"><a href="index.html">首页</a></li>
+                <li><a href="city.html">城市</a></li>
+                <li><a href="country.html">乡村</a></li>
+                <li><a href="index.html">新闻资讯</a></li>
+            </ul>
+        </div>
+    </div>
+
+<div id="top">
+    <div class="banner-left">
+        <img src="imgs/banner.jpg" alt="商品详情" title="亲子家庭教育">
+    </div>
+    <div class="banner-right">
+        <h1>【爱育幼童亲子讲堂第12期】</h1>
+
+        <div class="price">
+            <span class="money">￥ 2.00</span>
+            <span class="score"></span>
+            <em>4.7分</em>
+        </div>
+        <div class="introduce">
+            <p>课时安排 ：1节</p>
+
+            <p>师资机构 : <a href="#"> 爱育母婴专营店</a><span class="contact"></span></p>
+        </div>
+        <button type="button" class="join">我要参加</button>
+    </div>
+</div>
+<div id="bottom">
+    <div class="botm-left">
+        <div class="in-top">
+            <ul>
+                <li style="border-bottom-color: orange">简介</li>
+                <li>评论(<span>4</span>)</li>
+            </ul>
+        </div>
+        <div class="in-bottom">
+            <ul class="details">
+                <li><img src="imgs/details1.jpg"></li>
+                <li><img src="imgs/details2.jpg"></li>
+            </ul>
+            <ul class="comment">
+                <li>
+                    <div class="comment-left">
+                        <img src="imgs/head.png">
+                        <p class="name">lisi</p>
+                    </div>
+                    <div class="comment-right">
+                        <p>东西还是很全的！对于新手来说也有入门基础课程！这样的价位买买到这么好的课程也算是物有所值，想要学习都可以看看！</p>
+                        <p>2016-03-25</p>
+                    </div>
+                </li>
+                <li><div class="comment-left">
+                    <img src="imgs/head.png">
+                    <p class="name">zhangsan</p>
+                </div>
+                    <div class="comment-right">
+                        <p>课程很好，内容丰富，视屏清晰里面讲的都很贴合实际。</p>
+                        <p>2016-03-25</p>
+                    </div></li>
+                <li><div class="comment-left">
+                    <img src="imgs/head.png">
+                    <p class="name">zhaoliu</p>
+                </div>
+                    <div class="comment-right">
+                        <p>太棒了，要的内容全有，下次还来观顾，好评，好评。</p>
+                        <p>2016-03-25</p>
+                    </div></li>
+                <li><div class="comment-left">
+                    <img src="imgs/head.png">
+                    <p class="name">wangwu</p>
+                </div>
+                    <div class="comment-right">
+                        <p>很好，赶上特价?????</p>
+                        <p>2016-03-25</p>
+                    </div></li>
+            </ul>
+        </div>
+    </div>
+    <div class="botm-right">
+        <ul>
+            <h3>相关推荐</h3>
+            <li><a href="#"><img src="imgs/recommend1.jpg"></a></li>
+            <li><a href="#"><img src="imgs/recommend2.jpg"></a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="footer">
+        <span>© 2016 Yuntu-Mayaren 版权所有</span>
+    </div>
+<div id="frameWrap">
+    <button class="closeBtn">x</button>
+    <iframe id="myFrame" src="" scrolling="auto"></iframe>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/header_footer.js"></script>
+<script>
+    window.onload = function (){
+        var aNav = $('.in-top li');
+        var aContent = $('.in-bottom>ul');
+        var contact = $('.contact');
+        var closeBtn = $('.closeBtn');
+        var join = $('.join');
+        var name = window.location.hash;
+        var myFrame = document.getElementById('myFrame');
+        myFrame.src = "client-socket.html?"+name;
+        for(var i=0;i<aNav.length;i++){
+            (function (i){
+                $(aNav[i]).on('click',function (){
+                    $(this).css('border-bottom','5px solid orange').siblings().css('border-bottom','5px solid #000');
+                    $(aContent[i]).show().siblings().hide();
+                })
+            })(i);
+
+        }
+        join.on('click',function(){
+           alert('报名成功！');
+        });
+        contact.on('click',function(){
+            if(name){
+                $('#frameWrap').show();
+            }else{
+                if(confirm("请先登录！")){
+                    window.location.href = "login.html";
+                }
+            }
+        });
+        closeBtn.on('click',function(){
+            $('#frameWrap').hide();
+        })
+    }
+
+</script>
+</body>
+</html>

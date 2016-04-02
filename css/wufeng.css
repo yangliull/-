@@ -1,0 +1,56 @@
+#photo {
+	height: 240px;
+	/*margin-top: 500px;*/
+}
+#photo .container {
+	position: absolute;
+	left: 830px;
+	top: 400px;
+	height: 230px;
+	width: 500px;
+	/*border: 1px solid #ddd;*/
+	border-radius: 5px;
+	overflow: hidden;
+}
+#photo h3 {
+	width: 13%;
+	min-width: 104px;
+}
+#photo ul {
+	width: 2400px;	
+	margin-top: 10px;
+	animation:picmove 8s linear infinite;	
+}
+#photo li{
+	width: 200px;
+	height: 150px;
+	background: #ccc;
+	float: left;		
+}
+@keyframes picmove {
+	0% {
+		-webkit-transform:translate(0);
+	}
+	20% {
+		-webkit-transform:translate(-240px);
+	}
+	40% {
+		-webkit-transform:translate(-480px);
+	}
+	60% {
+		-webkit-transform:translate(-720px);
+	}
+	80% {
+		-webkit-transform:translate(-960px);
+	}
+	100% {
+		-webkit-transform:translate(-1200px);
+	}
+}
+#photo ul:hover {
+	animation-play-state:paused;
+}
+#photo img {
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>chat one by one</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        html,body{
+            background: #fff;
+        }
+        #wrap{
+            border: 2px solid #999;
+            height: 300px;
+        }
+        #messages {
+            height: 70%;
+            overflow: auto;
+            background-color: #CCC;
+        }
+        #wrap form{
+            position: relative;
+            height: 30%;
+        }
+        #msg{
+            /*border: none;*/
+            /*display: block;*/
+            width: 99%;
+            height: 75%;
+        }
+        em{
+            cursor: pointer;
+        }
+        button{
+            float: right;
+            width: 40px;
+            height: 20%;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="messages">
+        <ul id="cont"></ul>
+    </div>
+    <form action="">
+        <textarea id="msg"></textarea><br />
+        <button id="btn-send-msg" type="button">发送</button>
+    </form>
+</div>
+
+<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    window.onload = function (){
+        var name = window.location.hash.substring(1);
+        var socket = new  WebSocket('ws://192.168.0.128:9998/'+name);
+        var msg = document.getElementById('msg');
+        var btn = document.getElementById('btn-send-msg');
+        var ul = document.getElementById('cont');
+        var to = "";
+        socket.onopen = function(e) {
+            console.log('ok');
+
+            socket.onmessage = function(e) {
+                var data = JSON.parse(e.data);
+                data.message = data.message.replace(/</g,'&lt');
+                $(ul).append("<li><em>"+data.name+"</em> : "+data.message+"</li>");
+            };
+            socket.onclose = function(e) {
+                console.log('Client notified socket has closed',e);
+            };
+            socket.onerror = function(e){
+                console.log('========error====0====');
+            };
+            ul.addEventListener('click',function(e){
+                if(e.target && e.target.nodeName == "EM") {
+                    to = e.target.innerHTML;
+                    console.log(to);
+                }
+            });
+            btn.onclick = function () {
+                var message = $(msg).val();
+                var data = {
+                    name: name,
+                    message: message,
+                    to: to
+                };
+                $(msg).val("");
+                socket.send(JSON.stringify(data));
+            };
+        };
+    };
+
+//    特性常量	           取值	状态
+//    WebSocket.CONNECTING	0	连接正在进行中，但还未建立
+//    WebSocket.OPEN	    1	连接已建立，消息可以开始传递
+//    WebSocket.CLOSING	    2	连接正在进行关闭
+//    WebSocket.CLOSED	    3	连接已关闭
+</script>
+</body>
+</html>

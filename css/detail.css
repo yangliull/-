@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html, body {
+    font-family: "Microsoft YaHei";
+}
+
+#top {
+    overflow: hidden;
+}
+
+#top > div {
+    float: left;
+}
+
+#top .banner-left {
+    padding: 3% 0;
+    width: 54%;
+    min-width: 340px;
+}
+
+#top .banner-left img {
+    width: 100%;
+}
+
+#top .banner-right {
+    padding: 3%;
+    width: 34%;
+    min-width: 269px;
+}
+
+.banner-right h1 {
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 处理空白*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10%;
+}
+
+.price {
+    color: orange;
+    margin-bottom: 10%;
+}
+
+.money {
+    font-size: 22px;
+}
+
+.score {
+    margin-left: 50px;
+    display: inline-block;
+    width: 98px;
+    height: 16px;
+    background: url('../imgs/score.png') no-repeat 0 -97px;
+}
+
+.introduce {
+    margin-bottom: 20%;
+}
+
+.introduce .contact{
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    background: url('../imgs/contact.gif') no-repeat -82px -4px;
+}
+
+.introduce a {
+    color: #ccc;
+}
+
+.join {
+    width: 100px;
+    height: 30px;
+    background: #25c2b8;
+    border: 0;
+    border-radius: 5%;
+    color: #fff;
+    cursor: pointer;
+}
+#bottom {
+    overflow: hidden;
+}
+#bottom div {
+    float: left;
+}
+
+.botm-left {
+    width: 70%;
+    margin-right: 2%;
+    padding: 1%;
+    border: 1px solid #ccc;
+}
+
+.in-top {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.in-top li {
+    float: left;
+    width: 20%;
+    margin-right: 2%;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 5px solid #000;
+}
+
+.in-bottom {
+    width: 100%;
+}
+.in-bottom img{
+    width: 100%;
+}
+.comment{
+    display: none;
+}
+.comment li{
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+.comment div{
+    float: left;
+}
+.comment p{
+    margin-bottom: 10px;
+}
+.comment-left{
+    width: 5%;
+    margin-right: 5%;
+}
+.comment-left img{
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.comment-left .name{
+    text-align: center;
+    color: #ccc;
+}
+.comment-right{
+    width: 85%;
+    word-break: break-all;
+}
+.botm-right {
+    width: 25%;
+    border: 1px solid #ccc;
+}
+
+.botm-right li {
+    padding: 10%;
+}
+
+.botm-right img {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+#frameWrap{
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    display: none;
+}
+iframe{
+    border: none;
+    height: 304px;
+}
+#frameWrap .closeBtn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+}
